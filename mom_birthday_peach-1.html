@@ -1,67 +1,591 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Mom ♡</title>
-<style>
-:root{--peach:#f7b99f;--cream:#fff8f1;--rose:#d98275;--ink:#704d48;--soft:#fbe4d8}
-*{box-sizing:border-box}
-body{margin:0;min-height:100vh;background:radial-gradient(circle at 15% 10%,#ffe9dc,transparent 32%),linear-gradient(145deg,#fff8f1,#f8c9b4);color:var(--ink);font-family:Georgia,'Times New Roman',serif;overflow-x:hidden}
-.confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:3}
-.confetti i{position:absolute;top:-20px;width:8px;height:13px;border-radius:3px;animation:fall linear infinite;opacity:.75}
-@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
-main{width:min(92%,720px);margin:6vh auto 40px;text-align:center;position:relative;z-index:1}
-.tag{font:600 11px Arial,sans-serif;letter-spacing:3px;text-transform:uppercase;color:#b9786d}
-.card{margin-top:18px;background:rgba(255,250,246,.83);border:1px solid rgba(255,255,255,.9);border-radius:30px;padding:clamp(25px,6vw,58px) clamp(20px,6vw,60px);box-shadow:0 22px 70px #a9695030;backdrop-filter:blur(8px)}
-.flower{font-size:42px;margin:0 0 10px}
-h1{font-size:clamp(42px,9vw,76px);font-weight:normal;line-height:1.02;margin:10px 0;color:#b96e64}
-h1 span{font-style:italic;color:#d88b7a}
-.subtitle{font:14px Arial,sans-serif;letter-spacing:1px;color:#a77c72;margin:18px 0 28px}
-.divider{width:70px;height:2px;background:#e9b09c;margin:25px auto}
-.message{font-size:clamp(17px,3.7vw,21px);line-height:1.8;max-width:510px;margin:0 auto;color:#765650}
-.signature{font-style:italic;font-size:24px;color:#c17b70;margin-top:28px}
-button{border:0;border-radius:999px;background:#c97f72;color:#fffaf6;padding:15px 27px;font:600 13px Arial,sans-serif;letter-spacing:.7px;cursor:pointer;box-shadow:0 8px 20px #c97f7240;transition:.2s;margin-top:27px}
-button:hover{transform:translateY(-3px);background:#b96e64}
-#surprise{display:none;margin:24px auto 0;padding:22px;background:#fff0e8;border-radius:20px;line-height:1.7;animation:pop .5s ease}
-@keyframes pop{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
-footer{font:11px Arial,sans-serif;letter-spacing:1.5px;color:#a77c72;margin:22px}
-.heart{color:#d98275}
-</style>
-</head>
-<body>
-<div class="confetti" id="confetti"></div>
-<main>
-  <div class="tag">A little celebration, made with love</div>
-  <section class="card">
-    <div class="flower">🌷</div>
-    <div class="tag">For the world's sweetest mom</div>
-    <h1>Happy Birthday,<br><span>Mom!</span></h1>
-    <p class="subtitle">TODAY IS ALL ABOUT YOU ✨</p>
-    <div class="divider"></div>
-    <p class="message">
-      Thank you for every hug, every little sacrifice, every lesson,
-      and every time you made everything feel okay.
-      <br><br>
-      You make our home warmer, our days brighter, and my world
-      a whole lot better. I may not say it every day, but I love
-      you more than words can explain.
-    </p>
-    <div class="signature">With all my love, always <span class="heart">♥</span></div>
-    <button id="openBtn" onclick="reveal()">OPEN YOUR LITTLE SURPRISE ✨</button>
-    <div id="surprise">
-      💗 One big birthday hug is waiting for you!<br>
-      I hope this year brings you as much happiness as you give everyone around you.
-      <br><strong>Love you, Mom. Happy Birthday! 🎂</strong>
+<meta name="theme-color" content="#fff1e8">
+<title>For Mom ♡ | Happy Birthday</title><style>
+:root {
+  --peach:#f7b99f;
+  --cream:#fff8f1;
+  --rose:#c97f72;
+  --ink:#704d48;
+  --pink:#f9d9d0;
+}
+
+* {
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body {
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 10% 10%,#ffe6d9,transparent 35%),
+    linear-gradient(145deg,#fff8f1,#f8c9b4);
+  color:var(--ink);
+  font-family:Georgia,serif;
+  overflow-x:hidden;
+}
+
+button {
+  border:none;
+  cursor:pointer;
+  border-radius:50px;
+  padding:14px 23px;
+  background:var(--rose);
+  color:white;
+  font-weight:bold;
+  letter-spacing:.5px;
+  transition:.3s;
+}
+
+button:hover {
+  transform:translateY(-3px);
+  background:#b96e64;
+}
+
+button:active {
+  transform:scale(.96);
+}
+
+header {
+  text-align:center;
+  padding:55px 15px 20px;
+  position:relative;
+  z-index:2;
+}
+
+.tag {
+  font:11px Arial,sans-serif;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:#b9786d;
+}
+
+h1 {
+  font-size:clamp(43px,9vw,76px);
+  font-weight:normal;
+  color:#b96e64;
+  margin:20px 0;
+  line-height:1.1;
+}
+
+h1 span {
+  font-style:italic;
+  color:#d88b7a;
+}
+
+.subtitle {
+  font:13px Arial,sans-serif;
+  letter-spacing:2px;
+  color:#a77c72;
+}
+
+section {
+  width:min(92%,720px);
+  margin:25px auto;
+  text-align:center;
+}
+
+.card {
+  background:#fffaf6e8;
+  border:1px solid white;
+  border-radius:27px;
+  padding:35px 22px;
+  margin:22px 0;
+  box-shadow:0 15px 50px #a9695020;
+  backdrop-filter:blur(8px);
+}
+
+h2 {
+  color:#b96e64;
+  font-size:29px;
+  font-weight:normal;
+  margin-bottom:18px;
+}
+
+p {
+  line-height:1.8;
+  font-size:17px;
+}
+
+.divider {
+  width:65px;
+  height:2px;
+  background:#e9b09c;
+  margin:22px auto;
+}
+
+/* Floating hearts */
+
+.heart {
+  position:fixed;
+  bottom:-30px;
+  pointer-events:none;
+  z-index:1;
+  animation:floatUp 8s linear forwards;
+}
+
+@keyframes floatUp {
+  to {
+    transform:translateY(-110vh) rotate(40deg);
+    opacity:0;
+  }
+}
+
+/* Confetti */
+
+.confetti {
+  position:fixed;
+  top:-15px;
+  width:8px;
+  height:13px;
+  z-index:10;
+  pointer-events:none;
+  animation:fall 5s linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform:translateY(110vh) rotate(720deg);
+    opacity:0;
+  }
+}
+
+/* Cake */
+
+.cake-area {
+  margin:25px auto;
+  height:190px;
+  display:flex;
+  justify-content:center;
+  align-items:end;
+}
+
+.cake {
+  position:relative;
+  width:160px;
+  height:90px;
+  background:#e9a18f;
+  border-radius:12px 12px 20px 20px;
+  box-shadow:inset 0 -12px #c97f72;
+  animation:cakeFloat 3s ease-in-out infinite;
+}
+
+.cake:before {
+  content:"";
+  position:absolute;
+  top:-12px;
+  left:0;
+  width:100%;
+  height:25px;
+  background:#fff0e8;
+  border-radius:50%;
+}
+
+.cake:after {
+  content:"";
+  position:absolute;
+  top:18px;
+  left:0;
+  width:100%;
+  height:10px;
+  background:#fff0e8;
+  border-radius:50%;
+}
+
+@keyframes cakeFloat {
+  50% {transform:translateY(-7px);}
+}
+
+.candle {
+  position:absolute;
+  top:-55px;
+  left:75px;
+  width:10px;
+  height:45px;
+  background:repeating-linear-gradient(
+    45deg,#fff 0 5px,#e98d83 5px 10px
+  );
+  border-radius:5px;
+}
+
+.flame {
+  position:absolute;
+  top:-20px;
+  left:1px;
+  width:9px;
+  height:18px;
+  background:#ffc45e;
+  border-radius:50% 50% 40% 40%;
+  box-shadow:0 0 20px #ffb52e;
+  animation:flicker .5s infinite alternate;
+}
+
+@keyframes flicker {
+  to {transform:scale(.8) rotate(5deg);}
+}
+
+/* Letter */
+
+.envelope {
+  background:#f7d9cc;
+  padding:30px 15px;
+  border-radius:15px;
+  margin:20px auto;
+  max-width:420px;
+}
+
+.letter {
+  display:none;
+  background:white;
+  padding:25px;
+  border-radius:15px;
+  margin-top:18px;
+  text-align:left;
+  animation:openLetter .7s ease;
+}
+
+.letter.show {
+  display:block;
+}
+
+@keyframes openLetter {
+  from {
+    opacity:0;
+    transform:translateY(20px) scale(.95);
+  }
+  to {
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+
+/* Gallery */
+
+.gallery {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-top:20px;
+}
+
+.gallery img {
+  width:100%;
+  height:150px;
+  object-fit:cover;
+  border-radius:13px;
+  background:#f5d7ca;
+  border:2px solid white;
+  transition:.3s;
+}
+
+.gallery img:hover {
+  transform:scale(1.04);
+}
+
+/* Video */
+
+.video-box {
+  display:none;
+  margin-top:22px;
+  animation:openLetter .5s ease;
+}
+
+.video-box.show {
+  display:block;
+}
+
+video {
+  width:100%;
+  max-height:450px;
+  border-radius:18px;
+  background:#241a18;
+}
+
+.edit-btn {
+  background:#b96e64;
+  margin-top:15px;
+  padding:16px 30px;
+}
+
+/* Music */
+
+.music-btn {
+  background:#d88b7a;
+}
+
+/* Final surprise */
+
+.final-screen {
+  display:none;
+  position:fixed;
+  inset:0;
+  background:linear-gradient(145deg,#fff1e8,#f4b9a6);
+  z-index:20;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:25px;
+}
+
+.final-screen.show {
+  display:flex;
+  animation:openLetter .7s ease;
+}
+
+.final-content h2 {
+  font-size:clamp(40px,9vw,65px);
+  margin:20px 0;
+}
+
+.final-content p {
+  max-width:500px;
+  margin:auto;
+}
+
+footer {
+  text-align:center;
+  padding:25px;
+  font:11px Arial,sans-serif;
+  letter-spacing:2px;
+  color:#a77c72;
+}
+
+@media(max-width:480px) {
+  header {padding-top:40px;}
+  .card {padding:28px 17px;}
+  .gallery img {height:110px;}
+}
+</style></head><body><header>
+  <div class="tag">A little celebration, made with love</div>  <h1>Happy Birthday,<br><span>Mom! ♡</span></h1>  <div class="subtitle">TODAY IS ALL ABOUT YOU ✨</div>
+</header><section><!-- CAKE --><div class="card">
+  <h2>A little cake for you 🎂</h2>  <div class="cake-area">
+    <div class="cake">
+      <div class="candle">
+        <div class="flame"></div>
+      </div>
     </div>
-  </section>
-  <footer>MADE WITH LOVE · JUST FOR YOU <span class="heart">♥</span></footer>
-</main>
-<script>
-const box=document.getElementById('confetti');
-const colors=['#e8a18f','#f4c66a','#d88b7a','#f6d9c9','#c5a3b8','#fff'];
-for(let i=0;i<42;i++){const p=document.createElement('i');p.style.left=Math.random()*100+'%';p.style.background=colors[i%colors.length];p.style.animationDuration=(6+Math.random()*8)+'s';p.style.animationDelay=(-Math.random()*12)+'s';p.style.transform='rotate('+Math.random()*360+'deg)';box.appendChild(p)}
-function reveal(){document.getElementById('surprise').style.display='block';document.getElementById('openBtn').textContent='A BIG HUG FOR YOU 💗';}
-</script>
-</body>
+  </div>  <p>Make a wish, Mom! 💗</p>
+</div><!-- MESSAGE --><div class="card">
+  <div style="font-size:40px">🌷</div>  <h2>To the world's sweetest Mom</h2>  <div class="divider"></div>  <p>
+    Thank you for every hug, every little sacrifice,
+    every lesson, and every time you made everything
+    feel okay.<br><br>
+
+You make our home warmer, our days brighter,
+and my world a whole lot better.
+
+<br><br>
+
+I may not say it every day, but I love you
+more than words can explain.
+
+  </p>  <div class="divider"></div>  <p style="font-style:italic;color:#c17b70">
+    With all my love, always ♥
+  </p>
+</div><!-- LETTER --><div class="card">
+  <h2>A letter for you 💌</h2>  <div class="envelope">
+    <div style="font-size:45px">💌</div>
+    <p>A little letter, written from my heart.</p><button onclick="openLetter()">OPEN YOUR LETTER</button>
+
+<div class="letter" id="letter">
+  <h2 style="font-size:23px">Dear Mom,</h2>
+
+  <p>
+    I don't know how to thank you for everything
+    you have done for me.
+
+    You are my biggest support, my safe place,
+    and one of the most important people in my life.
+
+    Thank you for believing in me, taking care
+    of me, and loving me even on my difficult days.
+
+    I hope I can make you proud.
+
+    <br><br>
+
+    I love you so much, Mom.
+
+    <br><br>
+
+    Forever your child. ❤️
+  </p>
+</div>
+
+  </div>
+</div><!-- PHOTO GALLERY --><div class="card">
+  <h2>Beautiful memories 📸</h2>  <p>A few moments worth keeping forever.</p>  <div class="gallery">
+    <img src="mom1.jpg" alt="Mom memory 1" loading="lazy">
+    <img src="mom2.jpg" alt="Mom memory 2" loading="lazy">
+    <img src="mom3.jpg" alt="Mom memory 3" loading="lazy">
+  </div>
+</div><!-- MUSIC --><div class="card">
+  <h2>A little birthday music 🎵</h2>  <p>Press play and enjoy your special day.</p>  <br>  <button class="music-btn" onclick="toggleMusic()" id="musicBtn">
+    ▶ PLAY MUSIC
+  </button><audio id="music" src="birthday-song.mp3" loop></audio>
+
+</div><!-- VIDEO EDIT --><div class="card">
+  <h2>Something special for you 🎬</h2>  <p>
+    I made something just for you.
+    This little video comes straight from my heart. ❤️
+  </p>  <button class="edit-btn" onclick="playEdit()">
+    ▶ PLAY MY EDIT ✨
+  </button>  <div class="video-box" id="videoBox">
+    <video id="editVideo" controls playsinline preload="metadata">
+      <source src="mom-edit.mp4" type="video/mp4">
+      Your browser does not support this video.
+    </video>
+  </div>
+</div><!-- FINAL SURPRISE --><div class="card">
+  <h2>One last surprise... 💗</h2>  <p>
+    Because one birthday message is never enough
+    for someone as special as you.
+  </p>  <br>  <button onclick="finalSurprise()">
+    OPEN YOUR FINAL SURPRISE ✨
+  </button>
+</div></section><footer>
+  MADE WITH LOVE · JUST FOR YOU ♥
+</footer><!-- FINAL FULLSCREEN --><div class="final-screen" id="finalScreen">
+  <div class="final-content">
+    <div style="font-size:65px">💗🌷🎂</div><h2>We Love You, Mom!</h2>
+
+<p>
+  No website, gift, or words could ever explain
+  how much you mean to me.
+
+  Thank you for being YOU.
+
+  <br><br>
+
+  Happy Birthday, Mom! ❤️
+</p>
+
+<br>
+
+<button onclick="closeFinal()">BACK TO MY SURPRISES</button>
+
+  </div>
+</div><script>
+
+/* FLOATING HEARTS */
+
+function createHeart() {
+  const heart = document.createElement("div");
+
+  heart.className = "heart";
+  heart.textContent = ["♡","♥","💗","🌸"][
+    Math.floor(Math.random()*4)
+  ];
+
+  heart.style.left = Math.random()*100+"%";
+  heart.style.fontSize = (15+Math.random()*20)+"px";
+  heart.style.animationDuration = (6+Math.random()*5)+"s";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(),11000);
+}
+
+setInterval(createHeart,900);
+
+
+/* CONFETTI */
+
+function celebrate() {
+  const colors = [
+    "#e8a18f",
+    "#f4c66a",
+    "#d88b7a",
+    "#f6d9c9",
+    "#c5a3b8"
+  ];
+
+  for(let i=0;i<90;i++) {
+    const piece = document.createElement("div");
+
+    piece.className = "confetti";
+
+    piece.style.left = Math.random()*100+"%";
+    piece.style.background =
+      colors[Math.floor(Math.random()*colors.length)];
+
+    piece.style.animationDuration =
+      (3+Math.random()*4)+"s";
+
+    piece.style.animationDelay =
+      Math.random()*1.5+"s";
+
+    document.body.appendChild(piece);
+
+    setTimeout(() => piece.remove(),8000);
+  }
+}
+
+celebrate();
+
+
+/* LETTER */
+
+function openLetter() {
+  document.getElementById("letter").classList.toggle("show");
+  celebrate();
+}
+
+
+/* MUSIC */
+
+const music = document.getElementById("music");
+const musicBtn = document.getElementById("musicBtn");
+
+async function toggleMusic() {
+  if(music.paused) {
+    try {
+      await music.play();
+      musicBtn.textContent = "❚❚ PAUSE MUSIC";
+    } catch(error) {
+      alert("Please check that birthday-song.mp3 is uploaded to GitHub.");
+    }
+  } else {
+    music.pause();
+    musicBtn.textContent = "▶ PLAY MUSIC";
+  }
+}
+
+
+/* VIDEO EDIT */
+
+const editVideo = document.getElementById("editVideo");
+const videoBox = document.getElementById("videoBox");
+
+async function playEdit() {
+  videoBox.classList.add("show");
+
+  editVideo.scrollIntoView({
+    behavior:"smooth",
+    block:"center"
+  });
+
+  try {
+    await editVideo.play();
+  } catch(error) {
+    alert("Please check that mom-edit.mp4 is uploaded correctly.");
+  }
+}
+
+
+/* FINAL SURPRISE */
+
+function finalSurprise() {
+  document.getElementById("finalScreen").classList.add("show");
+  celebrate();
+}
+
+function closeFinal() {
+  document.getElementById("finalScreen").classList.remove("show");
+}
+
+</script></body>
 </html>
