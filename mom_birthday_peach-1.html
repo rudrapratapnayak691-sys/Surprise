@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Mom ♡</title>
+<style>
+:root{--peach:#f7b99f;--cream:#fff8f1;--rose:#d98275;--ink:#704d48;--soft:#fbe4d8}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(circle at 15% 10%,#ffe9dc,transparent 32%),linear-gradient(145deg,#fff8f1,#f8c9b4);color:var(--ink);font-family:Georgia,'Times New Roman',serif;overflow-x:hidden}
+.confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:3}
+.confetti i{position:absolute;top:-20px;width:8px;height:13px;border-radius:3px;animation:fall linear infinite;opacity:.75}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+main{width:min(92%,720px);margin:6vh auto 40px;text-align:center;position:relative;z-index:1}
+.tag{font:600 11px Arial,sans-serif;letter-spacing:3px;text-transform:uppercase;color:#b9786d}
+.card{margin-top:18px;background:rgba(255,250,246,.83);border:1px solid rgba(255,255,255,.9);border-radius:30px;padding:clamp(25px,6vw,58px) clamp(20px,6vw,60px);box-shadow:0 22px 70px #a9695030;backdrop-filter:blur(8px)}
+.flower{font-size:42px;margin:0 0 10px}
+h1{font-size:clamp(42px,9vw,76px);font-weight:normal;line-height:1.02;margin:10px 0;color:#b96e64}
+h1 span{font-style:italic;color:#d88b7a}
+.subtitle{font:14px Arial,sans-serif;letter-spacing:1px;color:#a77c72;margin:18px 0 28px}
+.divider{width:70px;height:2px;background:#e9b09c;margin:25px auto}
+.message{font-size:clamp(17px,3.7vw,21px);line-height:1.8;max-width:510px;margin:0 auto;color:#765650}
+.signature{font-style:italic;font-size:24px;color:#c17b70;margin-top:28px}
+button{border:0;border-radius:999px;background:#c97f72;color:#fffaf6;padding:15px 27px;font:600 13px Arial,sans-serif;letter-spacing:.7px;cursor:pointer;box-shadow:0 8px 20px #c97f7240;transition:.2s;margin-top:27px}
+button:hover{transform:translateY(-3px);background:#b96e64}
+#surprise{display:none;margin:24px auto 0;padding:22px;background:#fff0e8;border-radius:20px;line-height:1.7;animation:pop .5s ease}
+@keyframes pop{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
+footer{font:11px Arial,sans-serif;letter-spacing:1.5px;color:#a77c72;margin:22px}
+.heart{color:#d98275}
+</style>
+</head>
+<body>
+<div class="confetti" id="confetti"></div>
+<main>
+  <div class="tag">A little celebration, made with love</div>
+  <section class="card">
+    <div class="flower">🌷</div>
+    <div class="tag">For the world's sweetest mom</div>
+    <h1>Happy Birthday,<br><span>Mom!</span></h1>
+    <p class="subtitle">TODAY IS ALL ABOUT YOU ✨</p>
+    <div class="divider"></div>
+    <p class="message">
+      Thank you for every hug, every little sacrifice, every lesson,
+      and every time you made everything feel okay.
+      <br><br>
+      You make our home warmer, our days brighter, and my world
+      a whole lot better. I may not say it every day, but I love
+      you more than words can explain.
+    </p>
+    <div class="signature">With all my love, always <span class="heart">♥</span></div>
+    <button id="openBtn" onclick="reveal()">OPEN YOUR LITTLE SURPRISE ✨</button>
+    <div id="surprise">
+      💗 One big birthday hug is waiting for you!<br>
+      I hope this year brings you as much happiness as you give everyone around you.
+      <br><strong>Love you, Mom. Happy Birthday! 🎂</strong>
+    </div>
+  </section>
+  <footer>MADE WITH LOVE · JUST FOR YOU <span class="heart">♥</span></footer>
+</main>
+<script>
+const box=document.getElementById('confetti');
+const colors=['#e8a18f','#f4c66a','#d88b7a','#f6d9c9','#c5a3b8','#fff'];
+for(let i=0;i<42;i++){const p=document.createElement('i');p.style.left=Math.random()*100+'%';p.style.background=colors[i%colors.length];p.style.animationDuration=(6+Math.random()*8)+'s';p.style.animationDelay=(-Math.random()*12)+'s';p.style.transform='rotate('+Math.random()*360+'deg)';box.appendChild(p)}
+function reveal(){document.getElementById('surprise').style.display='block';document.getElementById('openBtn').textContent='A BIG HUG FOR YOU 💗';}
+</script>
+</body>
+</html>
